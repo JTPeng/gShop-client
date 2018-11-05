@@ -160,7 +160,7 @@
                     </div>
                   </section>
                   <section class="shop_rating_order_right">
-                    <span class="delivery_style delivery_right">硅谷专送</span>
+                    <span class="delivery_style delivery_right">外卖专送</span>
                   </section>
                 </section>
                 <section class="shop_distance">
@@ -204,7 +204,7 @@
                     </div>
                   </section>
                   <section class="shop_rating_order_right">
-                    <span class="delivery_style delivery_right">硅谷专送</span>
+                    <span class="delivery_style delivery_right">外卖专送</span>
                   </section>
                 </section>
                 <section class="shop_distance">
@@ -248,7 +248,7 @@
                     </div>
                   </section>
                   <section class="shop_rating_order_right">
-                    <span class="delivery_style delivery_right">硅谷专送</span>
+                    <span class="delivery_style delivery_right">外卖专送</span>
                   </section>
                 </section>
                 <section class="shop_distance">
@@ -292,7 +292,7 @@
                     </div>
                   </section>
                   <section class="shop_rating_order_right">
-                    <span class="delivery_style delivery_right">硅谷专送</span>
+                    <span class="delivery_style delivery_right">外卖专送</span>
                   </section>
                 </section>
                 <section class="shop_distance">
