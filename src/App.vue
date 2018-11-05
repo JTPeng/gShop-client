@@ -1,28 +1,25 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <!--router-view 用于显示路由标签-->
+    <router-view/>
+    <!--使用组件-->
+    <FooterGuide/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  //声明组件
+  import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+  export default {
+    components:{//将组件映射成标签
+      FooterGuide
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus">
+  .app
+    width 100%
+    height 100%
+    background #f5f5f5
 </style>
