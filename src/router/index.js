@@ -23,7 +23,7 @@ export default new VueRouter({
       component:Order
     },
     {
-      path:'profile',
+      path:'/profile',
       component:Profile
     },
     {
