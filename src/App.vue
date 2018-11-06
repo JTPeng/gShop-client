@@ -3,7 +3,7 @@
     <!--router-view 用于显示路由标签-->
     <router-view/>
     <!--使用组件-->
-    <FooterGuide/>
+    <FooterGuide v-if="$route.meta.showFooter"/>
   </div>
 </template>
 
