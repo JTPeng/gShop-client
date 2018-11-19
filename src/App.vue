@@ -8,10 +8,25 @@
 </template>
 
 <script>
-  //声明组件
+  import {mapActions} from 'vuex'
+ //声明组件
   import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+
+
   export default {
-    components:{//将组件映射成标签
+    /*async*/ mounted(){
+      this.getAddress()
+     /* this.$store.dispatch('getCategorys')*/ //测试获取食品列表----返送请求的方式
+      /*this.$store.dispatch('getAddress')*///测试获取地址----返送请求的方式
+      /*const result = await reqFoodCategorys()
+      console.log(result)*/
+      this.getUserInfo()
+    },
+    methods:{
+      ...mapActions(['getAddress','getUserInfo'])
+    },
+ //将组件映射成标签
+    components:{
       FooterGuide
     }
   }

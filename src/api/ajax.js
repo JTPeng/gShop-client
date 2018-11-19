@@ -20,11 +20,13 @@ export default function ajax(url,data = {},type = 'GET') {
       promise = axios.get(url)
     } else {
       //发送post请求
-      promise = axios.get(url,data)
+      promise = axios.post(url,data)
     }
-    promise.then(reponse => {
-      resolve(reponse.data)
-    }).catch(error =>{
+    promise.then(function (response){
+      //成功了调用resolve()
+      resolve(response.data)
+    }).catch( function (error){
+      //失败了调用reject
       reject(error)
     })
 
