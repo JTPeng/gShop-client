@@ -160,6 +160,8 @@
           this.$store.dispatch('recordUser',user)
           //登录成功对页面进行跳转
           this.$router.replace('/profile')
+          //刷新验证码
+          this.getCaptcha()
         }else {
           //刷新验证码
           this.getCaptcha()

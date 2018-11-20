@@ -6,12 +6,14 @@ import {
   RECEIVE_CATEGORYS,
   RECEIVE_SHOPS,
   RECEIVE_USER_INFO,
+  RESET_USER_INFO,
 } from './mutation-types'
 import {
   reqAddress,
   reqFoodCategorys,
   reqShops,
   reqUserInfo,
+  reqLogout,
 } from '../api'
 export default {
 //  异步获取地址
@@ -57,6 +59,13 @@ export default {
     if (result.code === 0){
       const userInfo = result.data
       commit(RECEIVE_USER_INFO,{userInfo})
+    }
+  },
+  //异步登出请求
+  async logout({commit}){
+    const result = await reqLogout()
+    if (result.code === 0){
+      commit(RESET_USER_INFO)
     }
   }
 }
