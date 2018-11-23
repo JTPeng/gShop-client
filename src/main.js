@@ -8,6 +8,9 @@ import {Button} from 'mint-ui' //引入mint-ui的Button组件
 import router from './router'
 import store from './store'
 
+//加载
+import './mock/mockServer'
+
 /*import store from './store'*/
 //注册成全局组件标签
 Vue.component(Button.name,Button) //(mt-Button)
