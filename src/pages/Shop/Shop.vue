@@ -20,15 +20,15 @@
 
 <script>
   import ShopHeader from '../../components/ShopHeader/ShopHeader.vue'
-export default {
-    mounted(){
+
+  export default {
+    mounted () {
       this.$store.dispatch('getShopInfo')
     },
-  //注册成标签
-  components:{
-    ShopHeader
+    components: {
+      ShopHeader
+    }
   }
-}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">

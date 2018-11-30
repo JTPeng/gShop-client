@@ -14,6 +14,7 @@ import {
   INCREASE_FOOD_COUNT,
   DECREASE_FOOD_COUNT,
   CLEAR_CART,
+  RECEIVE_SEARCH_SHOPS,
 } from './mutation-types'
 export default {
   [RECEIVE_ADDRESS] (state,{address}){ //包含数据的对象
@@ -72,5 +73,9 @@ export default {
     state.cartFoods.forEach(food => food.count = 0)
     //将购物车置空
     state.cartFoods = []
-  }
+  },
+
+  [RECEIVE_SEARCH_SHOPS] (state,{searchShops}){
+    state.searchShops = searchShops
+  },
 }

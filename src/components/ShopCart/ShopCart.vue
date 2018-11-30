@@ -4,13 +4,13 @@
       <div class="content">
         <div class="content-left" @click="toggleShow">
           <div class="logo-wrapper">
-            <div class="logo " :class="{highlight:totalCount}">
-              <i class="iconfont icon-shopping" :class="{highlight: totalCount}"></i>
+            <div class="logo" :class="{highlight: totalCount}">
+              <i class="iconfont icon-shopping_cart" :class="{highlight: totalCount}"></i>
             </div>
             <div class="num" v-if="totalCount">{{totalCount}}</div>
           </div>
           <div class="price" :class="{highlight: totalCount}">￥{{totalPrice}}</div>
-          <div class="desc">另需配送费￥{{info.deliverryPrice}}元</div>
+          <div class="desc">另需配送费￥{{info.deliveryPrice}}元</div>
         </div>
         <div class="content-right">
           <div class="pay" :class="payClass">
@@ -26,7 +26,7 @@
           </div>
           <div class="list-content">
             <ul>
-              <li class="food" v-for="(food,index) in cartFoods" :key="index">
+              <li class="food" v-for="(food, index) in cartFoods" :key="index">
                 <span class="name">{{food.name}}</span>
                 <div class="price"><span>￥{{food.price}}</span></div>
                 <div class="cartcontrol-wrapper">
@@ -44,68 +44,69 @@
 </template>
 
 <script>
-  import {MessageBox} from 'mint-ui'
+  import { MessageBox } from 'mint-ui'
   import BScroll from 'better-scroll'
-  import {mapState,mapGetters} from 'vuex'
-  import CartControl from "../CartControl/CartControl";
+  import {mapState, mapGetters} from 'vuex'
+  import CartControl from '../CartControl/CartControl.vue'
+
   export default {
-    data(){
+    data () {
       return {
-        isShow:false
+        isShow: false
       }
     },
-    components: {
-      CartControl,
-    },
-    computed:{
-      ...mapState(['cartFoods','info']),
-      ...mapGetters(['totalCount','totalPrice']),
 
-      //支付的class
-      payClass(){
+    computed: {
+      ...mapState(['cartFoods', 'info']),
+      ...mapGetters(['totalCount', 'totalPrice']),
+      payClass () {
         const {totalPrice} = this
         const {minPrice} = this.info
-        return totalPrice >= minPrice ? 'enough' : 'not-enough'
+
+        return totalPrice>=minPrice ? 'enough' : 'not-enough'
       },
-
-      //显示的文本
-      payText(){
+      payText () {
         const {totalPrice} = this
         const {minPrice} = this.info
-        if (totalPrice === 0 ){
+        if(totalPrice===0) {
           return `￥${minPrice}元起送`
-        }else if (totalPrice < minPrice){
-          return `还差${minPrice - totalPrice}元起送`
-        }else{
-          return '去结算'
+        } else if(totalPrice<minPrice) {
+          return `还差￥${minPrice-totalPrice}元起送`
+        } else {
+          return '结算'
         }
       },
-      listShow(){
-        //总数量为0不显示
-        if(this.totalCount === 0){
+
+      listShow () {
+        // 如果总数量为0, 直接不显示
+        if(this.totalCount===0) {
           this.isShow = false
           return false
         }
 
-        if (this.isShow){
-          this.$nextTick(()=>{
-            //实现BScroll的实例是一个单例
-            if (!this.scroll){
-              this.scroll = new BScroll('.list-content',{
-                click:true
+        if(this.isShow) {
+          this.$nextTick(() => {
+            // 实现BScroll的实例是一个单例
+            if(!this.scroll) {
+              this.scroll = new BScroll('.list-content', {
+                click: true
               })
             } else {
-              this.scroll.refresh()//让滚动条刷新一下：重新统计内容的高
+              this.scroll.refresh() // 让滚动条刷新一下: 重新统计内容的高度
             }
+
           })
         }
+
         return this.isShow
       }
     },
-    methods:{
-      toggleShow(){
-        //购物车的食物大于0时才切换
-        if (this.totalCount > 0){
+
+
+    methods: {
+      toggleShow () {
+        // 只有当总数量大于0时切换
+        if(this.totalCount>0) {
           this.isShow = !this.isShow
         }
       },
@@ -115,6 +116,9 @@
           this.$store.dispatch('clearCart')
         }, () => {});
       }
+    },
+    components: {
+      CartControl
     }
   }
 </script>
@@ -156,7 +160,7 @@
             background #2b343c
             &.highlight
               background $green
-            .icon-shopping
+            .icon-shopping_cart
               line-height 44px
               font-size 24px
               color #80858a

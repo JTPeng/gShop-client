@@ -12,7 +12,8 @@ import {
   RECEIVE_RATINGS,
   INCREASE_FOOD_COUNT,
   DECREASE_FOOD_COUNT,
-  CLEAR_CART
+  CLEAR_CART,
+  RECEIVE_SEARCH_SHOPS
 } from './mutation-types'
 import {
   reqAddress,
@@ -23,6 +24,7 @@ import {
   reqShopGoods,
   reqShopInfo,
   reqShopRatings,
+  reqAddressSearchList
 } from '../api'
 export default {
 //  异步获取地址
@@ -120,5 +122,15 @@ export default {
   //同步清空购物车
   clearCart({commit}){
     commit(CLEAR_CART)
-  }
+  },
+
+  // 异步获取都说商家列表
+  async searchShops({commit,state},keyWord){
+    const geohash = state.latitude + ',' + state.longitude
+    const result = await reqAddressSearchList(geohash,keyWord)
+    if (result.code === 0){
+      const searchShops = result.data
+      commit(RECEIVE_SEARCH_SHOPS,{searchShops})
+    }
+  },
 }
